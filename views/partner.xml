@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_partner_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.inherited</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"></field>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='sales_purchases']/group/group[@name='sale']/field[@name='user_id']" position="before">
+                <field name="is_client"/>
+            </xpath>
+            <xpath expr="//page[@name='sales_purchases']/group/group[@name='purchase']/field[@name='property_supplier_payment_term_id']" position="before">
+                <field name="is_vendor"/>
+            </xpath>
+            <field  name="vat" position="after">
+                <field name="partner_code"/>
+            </field>
+        </field>        
+    </record>
+
+    <record id="view_res_partner_tree_inherit" model="ir.ui.view">
+        <field name="name">res.partner.tree.inherited</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"></field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='display_name']" position="before">
+                <field name="partner_code"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
